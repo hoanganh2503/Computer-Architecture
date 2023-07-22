@@ -93,12 +93,11 @@
  
 	;string message
 	.interface_msg1 db "Score:"
-	.start_screen_msg1 db "The t_rexcopter Game"
+	.start_screen_msg1 db "----DINO T-REX ---------"
 	.start_screen_msg2 db "Press any key to fly up  "
 	.start_screen_msg3 db "Release to fall down     "
-	.start_screen_msg4 db "Press 1/2/3 to change color"
+	.start_screen_msg4 db "Game programmed by group 3   "
 	.start_screen_msg5 db "Highscore:"
-	.start_screen_msg6 db "By Player:"
 	.game_over_msg1 db "GAME OVER!!!!"
 	.game_over_msg2 db "SPACE - TRY AGAIN"
 	.game_over_msg3 db "  ESC - EXIT     "
@@ -295,31 +294,6 @@ start_screen proc
 	mov dh,13				
 	mov dl,12				
 	int 10h
-	;in ra và khởi tạo màu cho msg5
-	mov ax,1300h
-	mov bh,back_screen_page_number  
-	mov bl,1011b			
-	lea bp,.start_screen_msg5
-	mov cx,10				
-	mov dh,22				
-	mov dl,2				
-	int 10h
- 
-	;in tính điểm
-	mov ax,high_score					;lưu điểm vào ax
-	mov row_for_print_as_ascii,22		;tọa độ x để lưu điểm
-	mov col_for_print_as_ascii,12		;tọa độ y để lưu điểm
-	call print_as_ascii					;gọi hàm in điểm
-	
-	;in msg6 "By Player:
-	mov ax,1300h
-	mov bh,back_screen_page_number 
-	mov bl,1011b			
-	lea bp,.start_screen_msg6
-	mov cx,10				
-	mov dh,22				
-	mov dl,18				
-	int 10h
 	
 	;in tên người chơi vừa thắng
 	mov ax,1300h
@@ -359,36 +333,29 @@ update_difficulty proc
 		je phase_4
 	cmp current_score,500
 		je phase_5
-	cmp current_score,600
-		je phase_6
-	cmp current_score,700
-		je phase_7
+
 	ret
 	phase_1:	
 		sub bottom_map_pos_y[319],4
-		mov map_gradient, 2				;khoảng cách dịch của các kí tự tăng lên 2
+		mov map_gradient, 2
+		mov map_velocity,15
 		ret
 	phase_2:
 		sub bottom_map_pos_y[319],4
+		mov map_velocity,20
 		ret
 	phase_3:
 		sub bottom_map_pos_y[319],4
+		mov map_velocity,25
 		ret
 	phase_4:
-		mov map_velocity,12				;số ký tự dịch sang bên trái tăng lên 12
 		mov lose_cactus_score_mark,75
+		mov map_velocity,30
 		ret
 	phase_5:
-		mov map_velocity,14				;số ký tự dịch sang bên trái tăng lên 14
+		mov map_velocity,35
 		ret
-	phase_6:
-		mov map_velocity,16				;số ký tự dịch sang bên trái tăng lên 16
-		mov lose_cactus_score_mark,50
-		ret
-	phase_7:
-		mov map_velocity,18				;số ký tự dịch sang bên trái tăng lên 18
-		mov map_gradient, 3				;độ chêch lệch tăng lên 3
-		ret
+
 update_difficulty endp
  
 ; ==================================
