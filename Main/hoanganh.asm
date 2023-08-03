@@ -14,8 +14,8 @@
 	char_for_print_as_ascii db ?	; số điểm
 	row_for_print_as_ascii db ?		
 	col_for_print_as_ascii db ?
-	;helicopter image - Hình ảnh trực thăng, mồi và lửa, sử dụng https://c...content-available-to-author-only...n.io/abdhass/full/jdRNdj
-	heli_image_1   db 00h,00h,00h,00h,00h,00h,06h,06h,06h,06h,06h,06h,06h,06h,06h,06h,06h,06h,06h ;19x9
+	;t_rexcopter image - Hình ảnh trực thăng, mồi và lửa, sử dụng https://c...content-available-to-author-only...n.io/abdhass/full/jdRNdj
+	t_rex_image_1   db 00h,00h,00h,00h,00h,00h,06h,06h,06h,06h,06h,06h,06h,06h,06h,06h,06h,06h,06h ;19x9
 				   db 08h,08h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,08h,00h,00h,00h,00h,00h,00h
 				   db 04h,04h,04h,00h,00h,00h,00h,00h,00h,00h,00h,08h,08h,08h,03h,03h,00h,00h,00h
 				   db 00h,08h,08h,08h,08h,08h,08h,08h,08h,08h,08h,08h,08h,03h,03h,03h,03h,00h,00h
@@ -24,56 +24,68 @@
 				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,04h,04h,04h,04h,04h,00h,00h
 				   db 00h,00h,00h,00h,00h,00h,00h,00h,06h,00h,00h,00h,00h,06h,00h,06h,00h,00h,06h
 				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,06h,06h,06h,06h,06h,06h,06h,06h,06h,00h
+    
+        fuel_image     db 00h,00h,00h,00h,00h,00h,07h,07h,07h     ; 12x9
+				   db 00h,00h,00h,00h,00h,07h,07h,07h,00h
+				   db 00h,00h,0ch,0ch,07h,07h,07h,00h,00h
+				   db 00h,0ch,0ch,0ch,0ch,07h,0ch,00h,00h
+				   db 0ch,0ch,0ch,0ch,0ch,0ch,0ch,0ch,00h
+				   db 0ch,0ch,00h,0ch,0ch,0ch,00h,0ch,0ch
+				   db 0ch,0ch,0ch,00h,0ch,00h,0ch,0ch,0ch
+				   db 0ch,0ch,0ch,0ch,00h,0ch,0ch,0ch,0ch
+				   db 0ch,0ch,0ch,00h,0ch,00h,0ch,0ch,0ch
+				   db 0ch,0ch,00h,0ch,0ch,0ch,00h,0ch,0ch
+				   db 0ch,0ch,0ch,0ch,0ch,0ch,0ch,0ch,0ch
+				   db 00h,0ch,0ch,0ch,0ch,0ch,0ch,0ch,00h
+    
+    fuel_pos_y dw ?
+	fuel_pos_x dw ?
+	fuel_image_width dw ?
+	fuel_image_height dw ?
+	fuel_exist db 1
+    fuel_count  db ?
 
-	heli_image_2   db 00h,00h,00h,00h,00h,00h,04h,04h,04h,04h,04h,04h,04h,04h,04h,04h,04h,04h,04h ;19x9
-				   db 0ch,0ch,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,0ch,00h,00h,00h,00h,00h,00h
-				   db 0ch,07h,0ch,00h,00h,00h,00h,00h,00h,00h,00h,0ch,0ch,0ch,08h,08h,00h,00h,00h
-				   db 00h,0ch,0ch,0ch,07h,0ch,0ch,0ch,0ch,0ch,0ch,0ch,0ch,08h,08h,08h,08h,00h,00h
-				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,0ch,0ch,0ch,08h,08h,08h,08h,08h,00h
-				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,07h,07h,07h,08h,08h,08h,08h,00h
-				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,07h,07h,07h,07h,07h,00h,00h
-				   db 00h,00h,00h,00h,00h,00h,00h,00h,04h,00h,00h,00h,00h,04h,00h,04h,00h,00h,04h
-				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,04h,04h,04h,04h,04h,04h,04h,04h,04h,00h
-				   
-	heli_image_3   db 00h,00h,00h,00h,00h,00h,07h,07h,07h,07h,07h,07h,07h,07h,07h,07h,07h,07h,07h ;19x9
-				   db 07h,06h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,05h,00h,00h,00h,00h,00h,00h
-				   db 06h,07h,06h,00h,00h,00h,00h,00h,00h,00h,00h,05h,05h,05h,08h,08h,00h,00h,00h
-				   db 00h,06h,05h,06h,05h,05h,05h,05h,05h,06h,05h,06h,05h,08h,08h,08h,08h,00h,00h
-				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,06h,05h,06h,08h,08h,08h,08h,08h,00h
-				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,06h,05h,06h,08h,08h,08h,08h,00h
-				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,06h,06h,06h,06h,06h,00h,00h
-				   db 00h,00h,00h,00h,00h,00h,00h,00h,07h,00h,00h,00h,00h,07h,00h,07h,00h,00h,07h
-				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,07h,07h,07h,07h,07h,07h,07h,07h,07h,00h
+ 
+	fire_pos_y dw ?
+	fire_pos_x dw ?
+	fire_image_width dw ?
+	fire_image_height dw ?
+ 
+	fuel_block_pos_x dw ?
+	fuel_block_pos_y dw ?
 				    
-	;Khởi tạo máy bay
-	;Tọa độ máy bay
-	heli_x   		dw ? 
-	heli_y   		dw ?
-	heli_fall_speed dw ? ;Tốc độ rơi của máy bay
-	heli_jump_speed dw ? ;Tốc độ nhảy của máy bay
-	;Chiều rộng, cao của máy bay
-	heli_width 		dw ?
-	heli_height     dw ?
+	;Khởi tạo khủng long
+	;Tọa độ khủng long
+	t_rex_x   		dw ? 
+	t_rex_y   		dw ?
+    check_distance dw ?
+	t_rex_fall_speed dw ? ;Tốc độ rơi của khủng long
+	t_rex_jump_speed dw ? ;Tốc độ nhảy của khủng long
+	;Chiều rộng, cao của khủng long
+	t_rex_width 		dw ?
+	t_rex_height     dw ?
 	;Vị trí bắt đầu
-	heli_image_start_address dw ?
+	t_rex_image_start_address dw ?
+	lose_fuel_score_mark dw ?
+
 
 	;Khởi tạo map
 	;Tọa độ trên dưới của map
-	top_cave_pos_y     db 320 dup(?) 	;trên
-	bottom_cave_pos_y  db 320 dup(?)	;dưới
-	cave_velocity      dw ? ;Vận tốc chuyển động của hang động
-	cave_gradient      db ?
-	cave_color         db 0FH ;Màu
-	.cave_ending       dw ? 
-	cave_direction     db ? ;0 = down, 1 = up
+	top_map_pos_y     db 320 dup(?) 	;trên
+	bottom_map_pos_y  db 320 dup(?)	;dưới
+	map_velocity      dw ? ;Vận tốc chuyển động của cây xương rồng
+	map_gradient      db ?
+	map_color         db 0FH ;Màu
+	.map_ending       dw ? 
+	map_direction     db ? ;0 = down, 1 = up
 	high_score    dw ?
 	current_score dw 0	;điểm hiện tại
 	loop_block_count db ?
 	.interface_msg1 db "Score:"
-	.start_screen_msg1 db "The Helicopter Game"
+	.start_screen_msg1 db "----DINO T-REX ---------"
 	.start_screen_msg2 db "Press any key to fly up  "
 	.start_screen_msg3 db "Release to fall down     "
-	.start_screen_msg4 db "Press 1/2/3 to change color"
+	.start_screen_msg4 db "Press space to start"
 	.start_screen_msg5 db "Highscore:"
 	.start_screen_msg6 db "By Player:"
 	.game_over_msg1 db "GAME OVER!!!!"
@@ -81,15 +93,15 @@
 	.game_over_msg3 db "  ESC - EXIT     "
 	.game_over_msg4 db "YOU WON PLAYER "
 	.game_over_msg5 db "YOUR NAME > "
-	tree db 'X'
 	
 ;------------------------------------------------------------------------------------------code segment start------------------------------------------------------------------------------------ 
 .code
 main proc
 	mov ax,@data
-  mov ds,ax
+  	mov ds,ax
 	mov es,ax
-	mov heli_image_start_address, offset heli_image_1 ;lấy địa chỉ của máy bay 1
+	mov t_rex_image_start_address, offset t_rex_image_1 ;lấy địa chỉ của khủng long 1
+	call randomize_seed
 	start:
 	call initialize_variable	;khởi tạo các biến
 	call set_video_mode			;gọi chế độ đồ họa
@@ -97,21 +109,28 @@ main proc
 
 	;bắt đầu chạy
 	loop_frame:
-		call spawn_heli			;máy bay
-		call spawn_cave			;map
+		call spawn_t_rex			;khủng long
+		call spawn_map			;map
 		call print_interface	;hiện điểm hiện tại
+        call spawn_fuel			
 		call flip_screen		;lật màn hình sau ra màn hình trước
 	 	call check_collision 	;kiểm tra va chạm
 		
 		;nếu va chạm thì nhảy đến lose, không thì nhảy đến no_collision
 		cmp al,1
-			je lose    ;cờ ZF, 0 = no collision, 1 = collision with cave
+			je lose    ;cờ ZF, 0 = no collision, 1 = collision with map
 			; cờ ZF=1 nếu al = 0, cờ ZF=0 nếu al=1
 		cmp al,0
 			je no_collision 
 		no_collision:
 		add current_score,1		;điểm hiện tại được cộng thêm 1 sau mỗi vòng lặp
-		call update_difficulty 	;gọi hàm tăng độ khó
+		; call update_difficulty 	;gọi hàm tăng độ khó
+
+        collide_with_fuel:	
+		inc fuel_count
+		mov fuel_exist,0
+		mov fuel_pos_x,1  
+
 		mov dx, 1       ;sleep for 1 tick
 		call sleep
 		call clear_back_screen
@@ -122,6 +141,84 @@ main proc
 		call exit	; else exit
 main endp
 
+decrease_fuel_count proc
+	cmp fuel_count,0 
+	je no_need_decrease
+	mov ax, current_score
+	mov dx,0
+	div lose_fuel_score_mark			       
+	cmp dl,0			
+	je reach_score_mark
+	ret
+	reach_score_mark:
+		dec fuel_count
+		ret
+	no_need_decrease:
+		ret
+decrease_fuel_count endp
+
+spawn_fuel proc
+	mov ax,current_score
+	mov dx,0
+	div fifty	    
+	cmp dl,0
+	je put_fuel_to_right_side
+	continue_spawn_fuel:
+	call draw_fuel
+	ret
+ 
+	put_fuel_to_right_side:
+		mov fuel_pos_x,310
+		mov ah,0
+		mov al,top_map_pos_y[180]
+		mov fuel_pos_y,ax
+		add fuel_pos_y,30
+		mov fuel_exist,1
+		jmp continue_spawn_fuel
+	ret
+spawn_fuel endp
+
+draw_fuel proc
+	cmp fuel_exist,1
+	je proceed_draw_fuel		
+		ret				
+	proceed_draw_fuel:
+	mov cx,fuel_pos_x 
+	mov dx,fuel_pos_y 
+	mov si,offset fuel_image     
+	draw_fuel_horizontal:
+		mov al,[si]    
+		cmp al,00h     
+			je skip_draw_pixel_2
+		mov ah,0ch 
+		mov bh,back_screen_page_number 
+		int 10h    
+		skip_draw_pixel_2:
+		inc si
+		inc cx     
+		mov ax,cx          
+		sub ax,fuel_pos_x
+		cmp ax,fuel_image_width
+			jng draw_fuel_horizontal
+ 
+		mov cx,fuel_pos_x 
+		inc dx       
+ 
+		mov ax,dx              
+		sub ax,fuel_pos_y
+		cmp ax,fuel_image_height
+			jng draw_fuel_horizontal
+ 
+	mov ax,map_velocity	
+	sub fuel_pos_x,ax
+	js fuel_out_of_bound   
+	ret
+	fuel_out_of_bound:
+		mov fuel_exist,0
+	ret
+draw_fuel endp
+
+
 ; khởi tạo các biến
 ; ==================================
 ; METHOD	: initialize_variable
@@ -129,32 +226,38 @@ main endp
 ; RETURN	: n/a
 ; ==================================
 initialize_variable proc	
-	mov heli_x,50	;toạ độ x bắt đầu của máy bay
-	mov heli_y,100	;tọa độ y bắt đầu của máy bay
-	mov heli_fall_speed,2	;tốc độ rơi
-	mov heli_jump_speed,8   ;tốc độ bay lên
-	mov heli_width,18      ;
-	mov heli_height,8		;
-	mov cave_velocity,10	;tốc độ di chuyển map
-	mov cave_gradient,1		; độ dịch của các kí tự trong map
-	mov cave_color,0fh  	;khởi tạo màu map
+	mov t_rex_x,50	;toạ độ x bắt đầu của khủng long
+	mov t_rex_y,170	;tọa độ y bắt đầu của khủng long
+	mov t_rex_fall_speed,3	;tốc độ rơi
+	mov t_rex_jump_speed,30   ;tốc độ bay lên
+	mov t_rex_width,18       ;kich thuoc cua khủng long
+	mov t_rex_height,8		;
+	mov map_velocity,10	;tốc độ di chuyển map
+	mov map_gradient,1		; độ dịch của các kí tự trong map
+	mov map_color,0fh  	;khởi tạo màu map
 	mov current_score,0		;khởi tạo số điểm hiện tại = 0
 
-	;reset top_cave
+
+	;reset top_map
 	mov si,0
 	mov cx,320				;kích thước của map
-	.reset_top_cave_pos:			
-		mov top_cave_pos_y[si],40
+	.reset_top_map_pos:			
+		; mov top_map_pos_y[si],40
 		inc si
-		loop .reset_top_cave_pos
+		loop .reset_top_map_pos
 	
-	;reset bottom_cave
+	;reset bottom_map
 	mov si,0
 	mov cx,320
-	.reset_bottom_cave_pos:			
-		mov bottom_cave_pos_y[si],160
+	.reset_bottom_map_pos:			
+		mov bottom_map_pos_y[si],180
 		inc si
-		loop .reset_bottom_cave_pos
+		loop .reset_bottom_map_pos
+
+	mov fuel_pos_x,300 			
+	mov fuel_pos_y,180			
+	mov fuel_image_width,8      
+	mov fuel_image_height,11
 		
 	ret
 initialize_variable endp
@@ -165,11 +268,11 @@ initialize_variable endp
 ; RETURN	: n/a
 ; ==================================
 ;hiển thị màn hình bắt đầu của trò chơi
-;hiển thị máy bay,map, thông báo ...
+;hiển thị khủng long,map, thông báo ...
 start_screen proc	
  .start_screen_begin:
-	call draw_heli  				;khởi tạo máy bay
-	call draw_cave					;khởi tạo map
+	call draw_t_rex  				;khởi tạo khủng long
+	call draw_map					;khởi tạo map
 	
    ;in ra và khởi tạo màu cho msg1
 	mov ax,1300h         			;hiển thị chuỗi
@@ -227,7 +330,7 @@ start_screen proc
 	mov col_for_print_as_ascii,12	;tọa độ y để lưu điểm
 	call print_as_ascii 			;gọi hàm in điểm
 	
-	;in msg6 "By Player:"
+	; ;in msg6 "By Player:"
 	mov ax,1300h          ;request display string,al 01 = advance cursor
 	mov bh,back_screen_page_number ;  write to back page first, later only flip screen
 	mov bl,10			;attribute
@@ -249,27 +352,16 @@ start_screen proc
 	int 10h
 	
 	call flip_screen ;thay đổi page_screen
-	;Đổi icon máy bay
+	;Đổi icon khủng long
 	mov ah, 7 ;đọc một ký tự từ bàn phìm dưới dạng mã ascii
 	int 21h
 	cmp al,31h ;ascii của 1 dưới dạng hex
-		je change_to_heli_image_1
-	cmp al,32h ;ascii của 2 dưới dạng hex
-		je change_to_heli_image_2
-	cmp al,33h ;ascii của 3 dưới dạng hex
-		je change_to_heli_image_3
+		je change_to_t_rex_image_1
 	ret
-	change_to_heli_image_1:
-		mov heli_image_start_address, offset heli_image_1
+	change_to_t_rex_image_1:
+		mov t_rex_image_start_address, offset t_rex_image_1
 		jmp .start_screen_begin
-		
-	change_to_heli_image_2:
-		mov heli_image_start_address, offset heli_image_2
-		jmp .start_screen_begin
-		
-	change_to_heli_image_3:
-		mov heli_image_start_address, offset heli_image_3
-		jmp .start_screen_begin
+
 start_screen endp
 
 ;update độ khó
@@ -296,57 +388,52 @@ update_difficulty proc
 		je phase_7
 	ret
 	phase_1:	; 
-		add top_cave_pos_y[319],4			;make cave narrower
-		sub bottom_cave_pos_y[319],4
-		mov cave_gradient, 2				;khoảng cách dịch của các kí tự tăng lên 2
+		; add top_map_pos_y[319],4			;make map narrower
+		sub bottom_map_pos_y[319],4
 		ret
 	phase_2:
-		add top_cave_pos_y[319],4			;make cave narrower
-		sub bottom_cave_pos_y[319],4
-		mov cave_color,0eh					; đổi màu map thành vàng
+		; add top_map_pos_y[319],4			;make map narrower
+		sub bottom_map_pos_y[319],4
 		ret
 	phase_3:
-		add top_cave_pos_y[319],4			;make cave narrower
-		sub bottom_cave_pos_y[319],4
+		; add top_map_pos_y[319],4			;make map narrower
+		sub bottom_map_pos_y[319],4
 		ret
 	phase_4:
-		mov cave_velocity,12				;số ký tự dịch sang bên trái tăng lên 12
+		mov map_velocity,12				;số ký tự dịch sang bên trái tăng lên 12
 		ret
 	phase_5:
-		mov cave_velocity,14				;số ký tự dịch sang bên trái tăng lên 14
-		mov cave_color,0ch					;màu chuyển sang màu đỏ
+		mov map_velocity,14				;số ký tự dịch sang bên trái tăng lên 14
 		ret
 	phase_6:
-		mov cave_velocity,16				;số ký tự dịch sang bên trái tăng lên 16
+		mov map_velocity,16				;số ký tự dịch sang bên trái tăng lên 16
 		ret
 	phase_7:
-		mov cave_velocity,18				;số ký tự dịch sang bên trái tăng lên 18
-		mov cave_color,04h					;chuyển màu map thành đỏ thẩm
-		mov cave_gradient, 3				;độ chêch lệch tăng lên 3
+		mov map_velocity,18				;số ký tự dịch sang bên trái tăng lên 18
 		ret
 update_difficulty endp
 
 ; ==================================
 ; METHOD	: check_collision
-; INPUT		: heli_y,top_cave_pos_y,bottom_cave_pos_y
-; RETURN	: al(0 = no collide cave, 1 = collide with cave, 2 = collide with fuel)
+; INPUT		: t_rex_y,top_map_pos_y,bottom_map_pos_y
+; RETURN	: al(0 = no collide map, 1 = collide with map, 2 = collide with fuel)
 ; ==================================
 ;kiểm tra va chạm
 check_collision proc	
-    mov si,heli_width
+    mov si,t_rex_width
 	add si,50
-	mov ax,heli_y
-	;kiểm tra sự va chạm của phần trên trực thăng với hang động
-	cmp al,top_cave_pos_y[si]
-		jbe collide_with_cave
-	cmp al,bottom_cave_pos_y[si]
-		jae collide_with_cave
-	;kiểm tra sự va chạm của phần dưới trực thăng với hang động
-	add ax,heli_height
-	cmp al,top_cave_pos_y[si]
-		jbe collide_with_cave
-	cmp al,bottom_cave_pos_y[si]
-		jae collide_with_cave	
+	mov ax,t_rex_y
+	;kiểm tra sự va chạm của phần trên trực thăng với cây xương rồng
+	; cmp al,top_map_pos_y[si]
+	; 	jbe collide_with_map
+	cmp al,bottom_map_pos_y[si]
+		jae collide_with_map
+	;kiểm tra sự va chạm của phần dưới trực thăng với cây xương rồng
+	add ax,t_rex_height
+	; cmp al,top_map_pos_y[si]
+	; 	jbe collide_with_map
+	cmp al,bottom_map_pos_y[si]
+		jae collide_with_map	
 	mov al,2
 	ret
 	
@@ -355,7 +442,7 @@ check_collision proc
 		mov al,0
 		ret
 	;trả về al=1 nếu va chạm
-	collide_with_cave:
+	collide_with_map:
 		mov al,1
 		ret	
 check_collision endp
@@ -498,159 +585,179 @@ print_interface endp
 
 
 ; ==================================
-; METHOD	: spawn_cave
-; INPUT		: TOP_CAVE_POS_Y, BOTTOM_CAVE_POS_Y, CAVE_VELOCITY, CAVE_GRADIENT
+; METHOD	: spawn_map
+; INPUT		: TOP_map_POS_Y, BOTTOM_map_POS_Y, map_VELOCITY, map_GRADIENT
 ; RETURN	: N/A
 ; ==================================
-spawn_cave proc	
-	call update_cave_pos
-	call draw_cave
+spawn_map proc	
+	call update_map_pos
+	call draw_map
 	ret
-spawn_cave endp
+spawn_map endp
 
 
 ; ==================================
-; METHOD	: update_cave_pos
-; INPUT		: TOP_CAVE_POS_Y, BOTTOM_CAVE_POS_Y, CAVE_VELOCITY, CAVE_GRADIENT
+; METHOD	: update_map_pos
+; INPUT		: TOP_map_POS_Y, BOTTOM_map_POS_Y, map_VELOCITY, map_GRADIENT
 ; RETURN	: N/A
 ; ==================================
 
-update_cave_pos proc
+update_map_pos proc
 	MOV SI,0
-	MOV AX, 320						;mov .cave_ending, 320-cave_velocity
-	SUB AX,cave_velocity
-	MOV .cave_ending,AX
-	shift_cave_to_left:    ;dịch map sang bên trái
-		mov di,si					 ;mov di, si+cave_velocity
-		add di,cave_velocity
-		mov al,top_cave_pos_y[di]    ;mov top_cave_pos_y[si],top_cave_pos_y[di]
-		mov top_cave_pos_y[si],al
-		mov al,bottom_cave_pos_y[di] ;mov bottom_cave_pos_y[si],bottom_cave_pos_y[di]
-		mov bottom_cave_pos_y[si],al
+	MOV AX, 320						;mov .map_ending, 320-map_velocity
+	SUB AX,map_velocity
+	MOV .map_ending,AX
+	shift_map_to_left:    ;dịch map sang bên trái
+		mov di,si					 ;mov di, si+map_velocity
+		add di,map_velocity
+		; mov al,top_map_pos_y[di]    ;mov top_map_pos_y[si],top_map_pos_y[di]
+		; mov top_map_pos_y[si],al
+		mov al,bottom_map_pos_y[di] ;mov bottom_map_pos_y[si],bottom_map_pos_y[di]
+		mov bottom_map_pos_y[si],al
 		inc si
-		cmp si,.cave_ending
-			jb shift_cave_to_left
+		cmp si,.map_ending
+			jb shift_map_to_left
 		
 	mov di,si	;mov di, si-1
 	sub di,1
 
-	;thay thế vị trí bên phải hang động
-	replace_cave_right_side_position:
+	;thay thế vị trí bên phải cây xương rồng
+	replace_map_right_side_position:
 		;random dịch các kí tự mới
-		call random             ; random number trong ax (0-65535)
-		mov dx,0
-		div two			        ;phần dư lưu trong DL (0 hoặc 1)
-		mov cave_direction, dl  ;0 = down, 1 = up
-		mov bl,cave_gradient    ;lưu độ dịch của map vào bl
-		cmp cave_direction,0
-			je downward_cave_pos
-		upward_cave_pos:
-			neg bl					;bl = -cave_gradient
+				; call random             ; random number trong ax (0-65535)
+		; mov dx,0
+		; div two			        ;phần dư lưu trong DL (0 hoặc 1)
+		; mov map_direction, dl  ;0 = down, 1 = up
+		mov bl,map_gradient    ;lưu độ dịch của map vào bl
+		cmp map_direction,0
+			je downward_map_pos
+		upward_map_pos:
+			neg bl					;bl = -map_gradient
 		
-		downward_cave_pos:
-		mov ah,bottom_cave_pos_y[di] 
-		add ah,bl					 ;ah = bottom_cave_pos_y[di] + cave_gradient
-		mov al,top_cave_pos_y[di]    
-		add al,bl					 ;al = top_cave_pos_y[di] + cave_gradient
+		downward_map_pos:
+		mov ah,bottom_map_pos_y[di] 
+		add ah,bl					 ;ah = bottom_map_pos_y[di] + map_gradient
+		; mov al,top_map_pos_y[di]    
+		add al,bl					 ;al = top_map_pos_y[di] + map_gradient
 		cmp al,0
-			jb cave_out_of_bound
-		cmp al,199
-			ja cave_out_of_bound
+			jb map_out_of_bound
+		cmp al,180
+			ja map_out_of_bound
 		cmp ah,0
-			jb cave_out_of_bound
-		cmp ah,199
-			ja cave_out_of_bound
+			jb map_out_of_bound
+		cmp ah,180
+			ja map_out_of_bound
 			
-		mov bottom_cave_pos_y[si],ah
-		mov top_cave_pos_y[si],al
+		mov bottom_map_pos_y[si],ah
+		; mov top_map_pos_y[si],al
 
-		end_update_cave_pos:
+		end_update_map_pos:
 			inc di
 			inc si
 			cmp si,320
-			jb replace_cave_right_side_position
+			jb replace_map_right_side_position
 		ret
-		cave_out_of_bound:
-			mov ah,bottom_cave_pos_y[di]
-			mov bottom_cave_pos_y[si],ah
-			mov al,top_cave_pos_y[di]
-			mov top_cave_pos_y[si],al
-			jmp end_update_cave_pos
-update_cave_pos endp
+		map_out_of_bound:
+			mov ah,bottom_map_pos_y[di]
+			mov bottom_map_pos_y[si],ah
+			; mov al,top_map_pos_y[di]
+			; mov top_map_pos_y[si],al
+			jmp end_update_map_pos
+update_map_pos endp
 
+; random proc
+; 	mov ax, seed
+; 	mov dx, 33333
+; 	mul dx				; nhân SEED với AX
+
+; 	inc ax				
+; 	mov seed, ax		; lưu giá trị seed mới
+; 	mov ax, dx			; trả về giá trị ngẫu nhiên trong AX
+; 	mov ah, 2;
+; 	mov ah, 02h    ; chức năng đặt vị trí con trỏ màn hình
+; random endp
 
 ; ==================================
-; METHOD	: draw_cave
-; INPUT		: TOP_CAVE_POS_Y, BOTTOM_CAVE_POS_Y,cave_color
+; METHOD	: draw_map
+; INPUT		: TOP_map_POS_Y, BOTTOM_map_POS_Y,map_color
 ; RETURN	: N/A
 ; ==================================
-draw_cave proc
-	mov si,0   ; địa chỉ top_cave_pos_y và bottom_cave_pos_y
-	draw_cave_1:
+draw_map proc
+	mov si,0   ; địa chỉ top_map_pos_y và bottom_map_pos_y
+	draw_map_1:
 		mov dh,0
-		mov dl,top_cave_pos_y[si]     		;khởi tạo vị trí y thành top_cave_pos_y
-		draw_top_cave:
+		; mov dl,top_map_pos_y[si]     		;khởi tạo vị trí y thành top_map_pos_y
+		draw_top_map:
 			mov cx,si  						;đặt vị trí x   
 			mov ah,0ch 						;đặt cấu hình để viết một pixel
-			mov al,cave_color 				;thay đổi màu
+			mov al,map_color 				;thay đổi màu
 			mov bh,back_screen_page_number 	;ghi vào trang sau trước, sau đó chỉ lật màn hình
 			int 10h    						;thực hiện cấu hình
 			sub dl,13  						;dl = độ dày của map
 			;giới hạn độ dày để map trên ko bị quá lề
-			cmp dl,top_cave_pos_y[si]
-			jb draw_top_cave
+			; cmp dl,top_map_pos_y[si]
+			jb draw_top_map
 			
 		mov dh,0
-		mov dl,bottom_cave_pos_y[si]  		;đặt vị trí y 
-		draw_bottom_cave:
-			mov cx,si  					 	;khởi tạo màu cho x    
-			mov ah,0ch 						;đặt cấu hình để viết một pixel
-			mov al,cave_color 				;thay đổi màu
-			mov bh,back_screen_page_number 	;ghi vào trang sau trước, sau đó chỉ lật màn hình
-			int 10h    						;thực hiện cấu hình
-			add dl,13						;dl = độ dày của map
-			;giới hạn độ dày để map dưới ko bị quá lề
-			cmp dl,199
-			jb draw_bottom_cave
+		mov dl,bottom_map_pos_y[si]  		;đặt vị trí y 
+		; draw_bottom_map:
+		; 	mov cx,si  					 	;khởi tạo màu cho x    
+		; 	mov ah,0ch 						;đặt cấu hình để viết một pixel
+		; 	mov al,map_color 				;thay đổi màu
+		; 	mov bh,back_screen_page_number 	;ghi vào trang sau trước, sau đó chỉ lật màn hình
+		; 	int 10h    						;thực hiện cấu hình
+		; 	add dl,13						;dl = độ dày của map
+		; 	;giới hạn độ dày để map dưới ko bị quá lề
+		; 	cmp dl,199
+		; 	jb draw_bottom_map
 		inc si
 		cmp si,320
-		jb draw_cave_1
+		jb draw_map_1
 	ret
-draw_cave endp
+draw_map endp
 
 ; ==================================
-; METHOD	: spawn_heli
-; INPUT		: HELI_X, HELI_Y, HELI_SIZE
+; METHOD	: spawn_t_rex
+; INPUT		: t_rex_X, t_rex_Y, t_rex_SIZE
 ; RETURN	: N/A
 ; ==================================
-spawn_heli proc ;
+spawn_t_rex proc ;
 	call kbhit ;kiểm tra có kí tự nào được nhập từ bàn phím hay không
 		cmp al, 0
 		je fall			;nếu ko thì nhảy fall
 		
-		;thay đổi vị trí trục y của máy bay
+		;thay đổi vị trí trục y của khủng long
 		jump:
-			mov ax,heli_jump_speed
-			sub heli_y, ax
-			jmp skip
+            mov check_distance, 169; 
+            mov ax, t_rex_y
+            sub check_distance, ax; kiểm tra độ cao của khủng long, nếu không chạm đất thì cho rơi xuống
+            jge skip;
+			mov ax,t_rex_jump_speed
+			sub t_rex_y, ax
+			jmp skip    
 		fall: 
-			mov ax,heli_fall_speed
-			add heli_y, ax	
+            mov check_distance, 170; 
+            mov ax, t_rex_y
+            sub check_distance, ax; kiểm tra độ cao của khủng long, nếu không chạm đất thì cho rơi xuống
+            jle skip;
+            fall2:
+                mov ax,t_rex_fall_speed
+                add t_rex_y, ax	
 		skip:
-			call draw_heli
+			call draw_t_rex
 	ret
-spawn_heli endp
+spawn_t_rex endp
 
 ; ==================================
-; METHOD	: DRAW_HELI
-; INPUT		: HELI_X, HELI_Y, HELI_SIZE
+; METHOD	: DRAW_t_rex
+; INPUT		: t_rex_X, t_rex_Y, t_rex_SIZE
 ; RETURN	: N/A
 ; ==================================
-draw_heli proc
-	mov cx,heli_x ; tọa độ x của máy bay
-	mov dx,heli_y ; tọa độ y của máy bay
-	mov si,heli_image_start_address      ;địa chỉ của máy bay
-	draw_heli_horizontal:
+draw_t_rex proc
+	mov cx,t_rex_x ; tọa độ x của khủng long
+	mov dx,t_rex_y ; tọa độ y của khủng long
+	mov si,t_rex_image_start_address      ;địa chỉ của khủng long
+	draw_t_rex_horizontal:
 		mov al,[si]    		; lưu giá trị màu hiện tại vào al
 		cmp al,00h     		; nếu là màu trắng thì không cần vẽ
 			je skip_draw_pixel
@@ -660,20 +767,20 @@ draw_heli proc
 		skip_draw_pixel:
 		inc si
 		inc cx     ;cx = cx + 1
-		mov ax,cx          ;cx - heli_x > heli size (y -> ta xuống dòng tiếp theo, n -> ta sang cột tiếp theo)
-		sub ax,heli_x
-		cmp ax,heli_width
-			jng draw_heli_horizontal
+		mov ax,cx          ;cx - t_rex_x > t_rex size (y -> ta xuống dòng tiếp theo, n -> ta sang cột tiếp theo)
+		sub ax,t_rex_x
+		cmp ax,t_rex_width
+			jng draw_t_rex_horizontal
 		
-		mov cx,heli_x ;thanh ghi cx quay trở lại cột ban đầu
+		mov cx,t_rex_x ;thanh ghi cx quay trở lại cột ban đầu
 		inc dx        ;tiến lên một dòng
 		
-		mov ax,dx            ;dx - heli_y > heli size (y -> thoát khỏi thủ tục này, n -> chuyển sang dòng tiếp theo)
-		sub ax,heli_y
-		cmp ax,heli_height
-			jng draw_heli_horizontal
+		mov ax,dx            ;dx - t_rex_y > t_rex size (y -> thoát khỏi thủ tục này, n -> chuyển sang dòng tiếp theo)
+		sub ax,t_rex_y
+		cmp ax,t_rex_height
+			jng draw_t_rex_horizontal
 	ret
-draw_heli endp
+draw_t_rex endp
 
 
 ; ==================================
@@ -709,22 +816,6 @@ randomize_seed proc
 	ret
 randomize_seed endp
 	
-	
-; ================================
-; PROTOTYPE	: random
-; INPUT		: seed
-; RETURN	: random number(0-65535) in AX
-; ================================
-random proc
-	mov ax, seed
-	mov dx, 33333
-	mul dx				; nhân SEED với AX
-
-	inc ax				
-	mov seed, ax		; lưu giá trị seed mới
-	mov ax, dx			; trả về giá trị ngẫu nhiên trong AX
-	ret
-random endp
 
 
 ; ============================================================

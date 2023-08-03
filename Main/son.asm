@@ -18,45 +18,28 @@
 	row_for_print_as_ascii db ?
 	col_for_print_as_ascii db ?
 	;t_rex, cactus image
-	t_rex_image_1   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h ; 20x23
-                    db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,00h ; 20x23
-                    db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,0Ch,0Ch,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch ; 20x23   
-                    db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch ; 20x23   
-                    db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch ; 20x23   
-                    db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch ; 20x23   
-                    db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,00h,00h,00h,00h,00h ; 20x23
-                    db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,00h,00h ; 20x23   
-                    db 00h,00h,0Ch,00h,00h,00h,00h,00h,00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,00h,00h,00h,00h,00h,00h ; 20x23   
-                    db 00h,00h,0Ch,00h,00h,00h,00h,00h,00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,00h,00h,00h,00h,00h,00h ; 20x23   
-                    db 00h,00h,0Ch,00h,00h,00h,00h,00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,00h,00h,00h,00h,00h,00h ; 20x23   
-                    db 00h,00h,0Ch,0Ch,00h,00h,00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,00h,00h,00h,00h ; 20x23   
-                    db 00h,00h,0Ch,0Ch,0Ch,00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,00h,0Ch,00h,00h,00h,00h ; 20x23   
-                    db 00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,00h,00h,00h,00h,00h,00h ; 20x23   
-                    db 00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,00h,00h,00h,00h,00h,00h ; 20x23   
-                    db 00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,00h,00h,00h,00h,00h,00h,00h ; 20x23   
-                    db 00h,00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,00h,00h,00h,00h,00h,00h,00h,00h ; 20x23   
-                    db 00h,00h,00h,00h,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,0Ch,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h ; 20x23   
-                    db 00h,00h,00h,00h,00h,0Ch,0Ch,0Ch,00h,0Ch,0Ch,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h ; 20x23   
-                    db 00h,00h,00h,00h,00h,0Ch,0Ch,00h,00h,00h,0Ch,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h ; 20x23      
-                    db 00h,00h,00h,00h,00h,0Ch,00h,00h,00h,00h,0Ch,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h ; 20x23        
-                    db 00h,00h,00h,00h,00h,0Ch,0Ch,00h,00h,00h,0Ch,0Ch,00h,00h,00h,00h,00h,00h,00h,00h,00h ; 20x23
+	t_rex_image_1   db 00h,00h,00h,00h,00h,00h,06h,06h,06h,06h,06h,06h,06h,06h,06h,06h,06h,06h,06h ;19x9
+				   db 08h,08h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,08h,00h,00h,00h,00h,00h,00h
+				   db 04h,04h,04h,00h,00h,00h,00h,00h,00h,00h,00h,08h,08h,08h,03h,03h,00h,00h,00h
+				   db 00h,08h,08h,08h,08h,08h,08h,08h,08h,08h,08h,08h,08h,03h,03h,03h,03h,00h,00h
+				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,08h,08h,08h,03h,03h,03h,03h,03h,00h
+				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,04h,04h,04h,03h,03h,03h,03h,00h
+				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,00h,04h,04h,04h,04h,04h,00h,00h
+				   db 00h,00h,00h,00h,00h,00h,00h,00h,06h,00h,00h,00h,00h,06h,00h,06h,00h,00h,06h
+				   db 00h,00h,00h,00h,00h,00h,00h,00h,00h,06h,06h,06h,06h,06h,06h,06h,06h,06h,00h
 
-
-    cactus_image    db 00h,1Ah,00h,1Ah,1Ah,00h,00h,00h,00h
-					db 1Ah,1Ah,00h,1Ah,1Ah,00h,00h,00h,00h
-					db 1Ah,1Ah,00h,1Ah,1Ah,00h,00h,00h,00h
-					db 1Ah,1Ah,00h,1Ah,1Ah,00h,00h,00h,00h
-					db 1Ah,1Ah,00h,1Ah,1Ah,00h,00h,00h,00h
-					db 1Ah,1Ah,00h,1Ah,1Ah,00h,00h,1Ah,1Ah
-					db 1Ah,1Ah,1Ah,1Ah,1Ah,00h,00h,1Ah,1Ah
-					db 00h,1Ah,1Ah,1Ah,1Ah,00h,00h,1Ah,1Ah
-					db 00h,00h,00h,1Ah,1Ah,00h,00h,1Ah,1Ah
-					db 00h,00h,00h,1Ah,1Ah,00h,00h,1Ah,1Ah
-					db 00h,00h,00h,1Ah,1Ah,1Ah,1Ah,1Ah,1Ah
-					db 00h,00h,00h,1Ah,1Ah,1Ah,1Ah,1Ah,00h
-					db 00h,00h,00h,1Ah,1Ah,00h,00h,00h,00h
-					db 00h,00h,00h,1Ah,1Ah,00h,00h,00h,00h
-					db 00h,00h,00h,1Ah,1Ah,00h,00h,00h,00h
+    cactus_image     db 00h,00h,00h,00h,00h,00h,07h,07h,07h     ; 12x9
+				   db 00h,00h,00h,00h,00h,07h,07h,07h,00h
+				   db 00h,00h,0ch,0ch,07h,07h,07h,00h,00h
+				   db 00h,0ch,0ch,0ch,0ch,07h,0ch,00h,00h
+				   db 0ch,0ch,0ch,0ch,0ch,0ch,0ch,0ch,00h
+				   db 0ch,0ch,00h,0ch,0ch,0ch,00h,0ch,0ch
+				   db 0ch,0ch,0ch,00h,0ch,00h,0ch,0ch,0ch
+				   db 0ch,0ch,0ch,0ch,00h,0ch,0ch,0ch,0ch
+				   db 0ch,0ch,0ch,00h,0ch,00h,0ch,0ch,0ch
+				   db 0ch,0ch,00h,0ch,0ch,0ch,00h,0ch,0ch
+				   db 0ch,0ch,0ch,0ch,0ch,0ch,0ch,0ch,0ch
+				   db 00h,0ch,0ch,0ch,0ch,0ch,0ch,0ch,00h
 	
 	;Khởi tạo T_rex
 	;Tọa độ T_rex
@@ -130,7 +113,7 @@ main proc
 
 		;nếu va chạm thì nhảy đến lose, không thì nhảy đến no_collision
 		cmp al,1
-			je lose    	;cờ ZF, 0 = no collision, 1 = collision with map
+			je lose    	;cờ ZF, 0 = no collision, 1 = collision with cave
 			; cờ ZF=1 nếu al = 0, cờ ZF=0 nếu al=1
 		cmp al,0
 			je no_collision
@@ -165,7 +148,7 @@ spawn_cactus proc
 
         mov ax, 0
 		mov cactus_pos_y,ax; clear độ cao hiện tại của cây xương rồng
-		add cactus_pos_y,161; cho giá trị chân cây xương rồng bằng đường chân trời
+		add cactus_pos_y,168; cho giá trị chân cây xương rồng bằng đường chân trời
 		mov cactus_exist,1
 		jmp continue_spawn_cactus
 spawn_cactus endp
@@ -217,11 +200,11 @@ draw_cactus endp
 
 initialize_variable proc	
 	mov t_rex_x,50 				;toạ độ x bắt đầu của T_rex
-	mov t_rex_y,88				;tọa độ y bắt đầu của T_rex
-	mov t_rex_fall_speed, 3	    ;tốc độ rơi
-	mov t_rex_jump_speed, 30    ;tốc độ nhảy
-	mov t_rex_width,20    		;chiều rộng
-	mov t_rex_height, 21		;chiều cao
+	mov t_rex_y,170				;tọa độ y bắt đầu của T_rex
+	mov t_rex_fall_speed,4		;tốc độ rơi
+	mov t_rex_jump_speed,40		;tốc độ nhảy
+	mov t_rex_width,18       	;chiều rộng
+	mov t_rex_height,8			;chiều cao
 	mov map_velocity,10			;tốc độ di chuyển chủa map
 	mov map_gradient,1			; độ dịch của các kí tự trong map
 	mov map_color,0fh			;khởi tạo màu map
@@ -233,16 +216,16 @@ initialize_variable proc
 	mov si,0
 	mov cx,320
 	.reset_bottom_map_pos:			
-		mov bottom_map_pos_y[si],176
+		mov bottom_map_pos_y[si],180
 		inc si
 		loop .reset_bottom_map_pos
  
 	call read_highscore_from_file		
  
 	mov cactus_pos_x,300 		;toạ độ x bắt đầu của cactus
-	mov cactus_pos_y,100	;toạ độ y bắt đầu của cactus	
+	mov cactus_pos_y,100		;toạ độ y bắt đầu của cactus	
 	mov cactus_image_width,8  	;chiều rộng của cactus  
-	mov cactus_image_height,14	;chiều cao của cactus 		
+	mov cactus_image_height,11	;chiều cao của cactus 		
  	
  
 	mov lose_cactus_score_mark,100
@@ -333,37 +316,31 @@ update_difficulty proc
 		je phase_4
 	cmp current_score,500
 		je phase_5
-	cmp current_score,600
-		je phase_6
-	cmp current_score,700
-		je phase_7
+
 	ret
 	phase_1:	
 		sub bottom_map_pos_y[319],4
-		mov map_gradient, 2				;khoảng cách dịch của các kí tự tăng lên 2
+		mov map_gradient, 2
+		mov map_velocity,15
 		ret
 	phase_2:
 		sub bottom_map_pos_y[319],4
+		mov map_velocity,20
 		ret
 	phase_3:
 		sub bottom_map_pos_y[319],4
+		mov map_velocity,25
 		ret
 	phase_4:
-		mov map_velocity,15				;số ký tự dịch sang bên trái tăng lên 12
 		mov lose_cactus_score_mark,75
+		mov map_velocity,30
 		ret
 	phase_5:
-		mov map_velocity,20				;số ký tự dịch sang bên trái tăng lên 14
+		mov map_velocity,35
 		ret
-	phase_6:
-		mov map_velocity,25				;số ký tự dịch sang bên trái tăng lên 16
-		mov lose_cactus_score_mark,50
-		ret
-	phase_7:
-		mov map_velocity,30				;số ký tự dịch sang bên trái tăng lên 18
-		mov map_gradient, 3				;độ chêch lệch tăng lên 3
-		ret
+
 update_difficulty endp
+ 
 ; ==================================
 ;kiểm tra va chạm
 check_collision proc	
@@ -372,7 +349,7 @@ check_collision proc
 
     ;check vị trí hiện tại cây xương rồng
     mov ax, cactus_pos_x; vị trí hiện tại của cây xương rồng
-    mov bx, t_rex_x; tọa độ x của khủng long
+    mov bx, 50; tọa độ x của khủng long
     cmp ax, bx
         je check_location; nếu tọa đô của cây xương rồng trùng với khủng long, kiểm tra va ch
 
@@ -380,7 +357,7 @@ check_collision proc
 
     check_location:
 	mov ax,t_rex_y; vị trí hiện tại của khủng long
-	mov bx,150; chiều cao của xương rồng
+	mov bx,168; chiều cao của bình xănh
 	cmp bx,ax; nếu vị trí hiện tại của khủng long bé hơn hoặc bàng cây xương rồng nghĩa là đã chạm xương rồng
 		jbe collide; nhảy đến hàm collide
  
@@ -396,6 +373,10 @@ check_collision endp
 ; ==================================
 
 game_over_screen proc
+	; cập nhập điểm mới nếu cao hơn điểm cũ	
+	mov ax,current_score
+	cmp high_score,ax  		;so sánh current_score,high_score 
+	jb broke_record			; Nếu	high_score < current_score 
 		mov ah,02h			; đặt vị trí con trỏ
 		mov bh,front_screen_page_number		;trang 0
 		mov dh,11			;số hàng
@@ -414,7 +395,7 @@ game_over_screen proc
 			cmp si,13
 			jb print_game_over_animation
 
-		;in game_over_msg2: try again
+		;in game_over_msg2
 		mov ax,1300h
 		mov bh,front_screen_page_number
 		mov bl,1111b			
@@ -424,7 +405,7 @@ game_over_screen proc
 		mov dl,12				
 		int 10h
 
-		;in game_over_msg3: exit
+		;in game_over_msg3
 		mov ax,1300h
 		mov bh,front_screen_page_number
 		mov bl,1111b			
@@ -452,6 +433,58 @@ game_over_screen proc
 			stc			;play again(set carry flag to 1)
 			ret
  
+ 
+	broke_record:
+		mov high_score,ax  ;điểm hiện tại
+		;in game_over_msg4
+		mov ax,1300h		; chỉ viết lên màn hình phía trước, màn hình nhấp nháy vì không có hình ảnh chuyển động nhanh trong trò chơi này trên màn hình     
+		mov bh,front_screen_page_number
+		mov bl,1011b			
+		lea bp,.game_over_msg4	
+		mov cx,23				
+		mov dh,12				
+		mov dl,10				
+		int 10h
+ 
+		mov ax,1300h
+		mov bh,front_screen_page_number
+		mov bl,1011b			
+		lea bp,.game_over_msg5	
+		mov cx,15				
+		mov dh,13				
+		mov dl,10				
+		int 10h
+ 
+		mov ax,1300h
+		mov bh,front_screen_page_number
+		mov bl,1111b						;màu trắng
+		lea bp,high_score_player 
+		mov ch,0							
+		mov cl,input_name_act				;độ dài tên
+		mov dh,13				
+		mov dl,25				
+		int 10h
+ 
+		mov ax,1301h
+		mov bh,front_screen_page_number
+		mov bl,1011b			
+		lea bp,.game_over_msg6	
+		mov cx,12				
+		mov dh,14				
+		mov dl,10				
+		int 10h
+ 
+		MOV AH,0AH
+		LEA DX,input_name  
+		INT 21H
+		XOR AH,AH
+		MOV AL,input_name_act
+		MOV SI,AX         
+		MOV high_score_player[SI],' '
+ 
+		call write_highscore_to_file
+		stc
+		ret
 game_over_screen endp
  
  
@@ -528,7 +561,7 @@ spawn_t_rex proc
 		
 		;thay đổi vị trí trục y của T_rex
 		jump:
-            mov check_distance, 151; 
+            mov check_distance, 169; 
             mov ax, t_rex_y
             sub check_distance, ax; kiểm tra độ cao của khủng long, nếu không chạm đất thì cho rơi xuống
             jge skip;
@@ -536,7 +569,7 @@ spawn_t_rex proc
 			sub t_rex_y, ax
 			jmp skip    
 		fall: 
-            mov check_distance, 153; 
+            mov check_distance, 170; 
             mov ax, t_rex_y
             sub check_distance, ax; kiểm tra độ cao của khủng long, nếu không chạm đất thì cho rơi xuống
             jle skip;
